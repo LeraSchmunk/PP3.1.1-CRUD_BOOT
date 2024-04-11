@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update user</title>
+</head>
+
+<style>
+    table {
+        font-size: 18px;
+        background: white;
+        text-align: center;
+        width: 100%;
+    }
+    th {
+        font-weight: normal;
+        border-bottom: 3px solid #6678b1;
+        padding: 10px 8px;
+        font-size: 20px;
+    }
+    td {
+        padding: 9px 8px;
+    }
+    .header{
+        font-weight: bold;
+        text-align: center;
+    }
+    .btn{
+        border-color: #6678b1;
+        background-color: #6678b1;
+        color: white;
+        border-radius: 5px;
+        width: 30px;
+        height: 20px;
+    }
+    .edit{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    input{
+        background-color: transparent;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #6678b1;
+        width: 100%;
+    }
+    .btnAdd{
+        border-color: #6678b1;
+        background-color: #6678b1;
+        color: white;
+        border-radius: 5px;
+        width: 300px;
+        height: 50px;
+        text-transform: uppercase;
+    }
+  </style>
+
+<body>
+<table class="table_blur">
+  <tr>
+    <th colspan="4" class="header"> EDIT </th>
+  </tr>
+  <tr>
+    <th>NAME</th>
+    <th>SURNAME</th>
+    <th>AGE</th>
+    <th>     </th>
+  </tr>
+  <tr>
+    <form th:method="patch" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+      <td><input type="text" th:field="*{name}" id="name"/></td>
+      <td><input type="text" th:field="*{surname}" id="surname"/></td>
+      <td><input type="text" th:field="*{age}" id="age"/></td>
+      <td class="btnAdd"><input type="submit" value="Изменить" class="btnAdd"/></td>
+    </form>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+</head>
+
+<style>
+    table {
+        font-size: 18px;
+        background: white;
+        text-align: center;
+        width: 100%;
+    }
+
+    th {
+        font-weight: normal;
+        border-bottom: 3px solid #6678b1;
+        padding: 10px 8px;
+        font-size: 20px;
+    }
+
+    td {
+        padding: 9px 8px;
+    }
+
+    .header {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    input {
+        background-color: transparent;
+        height: 30px;
+        border-radius: 5px;
+        color: white;
+        border: 1px solid #6678b1;
+        width: 100%;
+    }
+
+    .btnAdd {
+        border-color: #6678b1;
+        background-color: #6678b1;
+        border-radius: 5px;
+        width: 300px;
+        height: 50px;
+        text-transform: uppercase;
+    }
+</style>
+
+<body>
+<table  class="table">
+  <tr>
+    <th colspan="6" class="header">VIEW USER</th>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>SURNAME</th>
+    <th>AGE</th>
+    <th>     </th>
+  </tr>
+  <tr>
+    <td><p th:text="${user.getId()}">VALUE</p></td>
+    <td><p th:text="${user.getName()}">VALUE</p></td>
+    <td><p th:text="${user.getSurname()}">VALUE</p></td>
+    <td><p th:text="${user.getAge()}">VALUE</p></td>
+    <td class="btnAdd"><a th:href="@{/users/{id}/edit(id=${user.getId()})}">Изменить</a></td>
+  </tr>
+</table>
+</body>
+</html>

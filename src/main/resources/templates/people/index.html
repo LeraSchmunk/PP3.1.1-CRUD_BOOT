@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+</head>
+<body>
+<br/>
+<br/>
+<table class="table">
+  <tr>
+    <th colspan="6" class="header">USERS</th>
+  </tr>
+
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>SURNAME</th>
+    <th>AGE</th>
+    <th>     </th>
+    <th>     </th>
+  </tr>
+
+  <tr th:each="user : ${users}">
+    <td th:text="${user.getId()}">user</td>
+    <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a></td>
+    <td th:text="${user.getSurname()}">user</td>
+    <td th:text="${user.getAge()}">user</td>
+    <td class="btn"><a th:href="@{/users/{id}/edit(id=${user.getId()})}" class="edit">Edit</a></td>
+    <td class="btn">
+        <form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+            <input type="submit" value="Delete"/>
+        </form>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<table>
+  </tr>
+  <td>
+    <form action="/users/new" >
+      <button type="submit" class="btnAdd">Add new user</button>
+    </form>
+  </td>
+
+  <td>
+    <form action="/users">
+      <button type="submit" class="btnAdd">Show all users</button>
+    </form>
+  </td>
+  </tr>
+</table>
+</body>
+<style>
+    table {
+        font-size: 18px;
+        background: white;
+        text-align: center;
+        width: 100%;
+    }
+    th {
+        font-weight: normal;
+        border-bottom: 3px solid #6678b1;
+        padding: 10px 8px;
+        font-size: 20px;
+    }
+    td {
+        padding: 9px 8px;
+    }
+    .header{
+        font-weight: bold;
+        text-align: center;
+    }
+    .btn{
+        border-color: #6678b1;
+        background-color: #6678b1;
+        color: white;
+        border-radius: 5px;
+        width: 30px;
+        height: 20px;
+    }
+    .edit{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    input{
+        background-color: transparent;
+        border: none;
+        color: white;
+        text-transform: uppercase;
+    }
+    .btnAdd{
+        border-color: #6678b1;
+        background-color: #6678b1;
+        color: white;
+        border-radius: 5px;
+        width: 300px;
+        height: 50px;
+        text-transform: uppercase;
+    }
+</style>
+
+</html>
